@@ -31,6 +31,29 @@ img {
     "side-nav content ads"
     "footer footer footer";
 }
+
+@media (max-width: 1200px) {
+  .structure {
+    grid-template-areas:
+      "header header header"
+      "side-nav content content"
+      "side-nav ads ads"
+      "footer footer footer";
+  }
+}
+
+@media (max-width: 760px) {
+  .structure {
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "header"
+      "side-nav"
+      "content"
+      "ads"
+      "footer";
+  }
+}
+
 /*Header*/
 .header {
   grid-area: header;
@@ -67,6 +90,16 @@ img {
 .logo {
   max-width: 200px;
 }
+
+@media (max-width: 760px) {
+  .header {
+    grid-template-columns: auto;
+  }
+  .logo {
+    margin-bottom: 20px;
+  }
+}
+
 /*Side Nav*/
 .side-nav {
   grid-area: side-nav;
@@ -86,6 +119,45 @@ img {
 }
 .side-nav li a:hover {
   background: #b07dfb;
+}
+
+@keyframes seta {
+  from{
+    right: 30px;
+  }
+  to{
+    right: 20px;
+  }
+}
+
+@media (max-width: 760px) {
+  .side-nav {
+    position: relative;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .side-nav::after {
+    content: "→";
+    position: absolute;
+    top: 5px;
+    right: 30px;
+    color: rgba(0, 0, 0, .3);
+    animation: seta .5s ease-in 0s infinite alternate;
+  }
+
+  .side-nav ul {
+    display: flex;
+  }
+  .side-nav li {
+    flex: 1 0 60px;
+  }
+  .side-nav {
+    padding: 0 30px;
+  }
+  .side-nav li a {
+    margin: 30px 30px 30px 0;
+  }
 }
 
 /*Content*/
@@ -182,13 +254,14 @@ p {
   top: 2px;
 }
 
-.emphasis{
+.emphasis {
   font-size: 0.875rem;
   color: #b07dfb;
   max-width: 16rem;
 }
 
-.cite, .attributes{
+.cite,
+.attributes {
   align-self: start;
   padding: 30px;
   border-radius: 5px;
@@ -196,7 +269,7 @@ p {
   background: linear-gradient(135deg, #8844ee, #b07dfb);
 }
 
-.cite p{
+.cite p {
   font-size: 1.5rem;
   font-style: italic;
   text-align: center;
@@ -205,14 +278,14 @@ p {
   color: #ffffff;
 }
 
-.attributes li{
+.attributes li {
   color: #ffffff;
   font-family: Courier, monospace;
   font-size: 1.125rem;
   padding: 15px;
 }
 
-.attributes li + li{
+.attributes li + li {
   border-top: 2px solid #b07dfb;
 }
 
